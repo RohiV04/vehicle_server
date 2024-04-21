@@ -17,7 +17,6 @@ const driverSchema = mongoose.Schema(
     pno: {
       type: Number,
       required: true,
-      unique: true,
     },
     licenseNumber: {
       type: String,

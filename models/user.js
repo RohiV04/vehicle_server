@@ -17,7 +17,6 @@ const userSchema = mongoose.Schema(
     pno: {
       type: Number,
       required: true,
-      unique: true,
     },
     
     regdno:{
