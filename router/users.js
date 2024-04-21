@@ -40,10 +40,9 @@ user.post("/create", async (req, res) => {
 });
 
 
-
-user.delete("/register/:id", async (req, res) => {
+user.delete("/delete/:email", async (req, res) => {
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await User.findOneAndDelete({ email: req.params.email });
     res.send(user);
   } catch (err) {
     console.log(err);
