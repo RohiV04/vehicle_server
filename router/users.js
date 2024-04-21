@@ -39,6 +39,28 @@ user.post("/create", async (req, res) => {
   }
 });
 
+user.put("/update/:email", async (req, res) => {
+  try {
+    const update = {
+      email: req.body.Email,
+      password: req.body.Password,
+      name: req.body.Name,
+      pno: req.body.Mobile,
+      regdno: req.body.Regdno,
+    };
+
+    const user = await User
+      .findOneAndUpdate({ email: req.params.email }, update, { new: true, upsert: false });
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
 
 user.delete("/delete/:email", async (req, res) => {
   try {
