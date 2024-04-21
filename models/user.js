@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+    //   required: true,
     },
     name: {
       type: String,
@@ -16,12 +16,12 @@ const userSchema = mongoose.Schema(
     },
     pno: {
       type: Number,
-      required: true,
+    //   required: true,
     },
     
     regdno:{
         type:String,
-        required: true,
+        // required: true,
     },
   },
   {
