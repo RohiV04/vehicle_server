@@ -6,10 +6,6 @@ const driverSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
@@ -17,16 +13,6 @@ const driverSchema = mongoose.Schema(
     pno: {
       type: Number,
       required: true,
-    },
-    licenseNumber: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    vehicleNumber: {
-      type: String,
-      required: true,
-      unique: true,
     },
   },
   {

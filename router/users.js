@@ -25,9 +25,7 @@ user.get("/email/:email", async (req, res) => {
 user.post("/create", async (req, res) => {
   const user = new User({
     email: req.body.Email,
-    password: req.body.Password,
     name: req.body.Name,
-    pno: req.body.Mobile,
     regdno:req.body.Regdno,
   });
   try {
@@ -68,6 +66,43 @@ user.delete("/delete/:email", async (req, res) => {
     res.send(user);
   } catch (err) {
     console.log(err);
+  }
+});
+
+user.put("/updateRequest/:email", async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { email: req.params.email }, 
+      { request: true }, 
+      { new: true, upsert: false }
+    );
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+user.put("/updateStatus/:email", async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { email: req.params.email }, 
+      { 
+        status: req.body.status, 
+        request: false 
+      }, 
+      { new: true, upsert: false }
+    );
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ error: "Internal server error" });
   }
 });
 

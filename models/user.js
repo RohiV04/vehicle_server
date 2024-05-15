@@ -6,22 +6,27 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
-      type: String,
-    //   required: true,
-    },
+    
     name: {
       type: String,
       required: true,
-    },
-    pno: {
-      type: Number,
-    //   required: true,
     },
     
     regdno:{
         type:String,
         // required: true,
+    },
+    // store location
+    location: {
+      type: String,
+    },
+    status: {
+      type: String,
+      default: "active",
+    },
+    request: {
+      type: Boolean,
+      default: false,
     },
   },
   {

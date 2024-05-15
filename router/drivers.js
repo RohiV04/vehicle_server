@@ -24,11 +24,8 @@ router.get("/email/:email", async (req, res) => {
 router.post("/create", async (req, res) => {
   const driver = new Driver({
     email: req.body.Email,
-    password: req.body.Password,
     name: req.body.Name,
     pno: req.body.Mobile,
-    licenseNumber: req.body.LicenseNumber,
-    vehicleNumber: req.body.VehicleNumber,
   });
   try {
     let d1 = await driver.save();
